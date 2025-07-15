@@ -29,18 +29,23 @@ A real-time **wearable safety solution** built using the **ESP32 microcontroller
 
 ---
 
-📁 Smart-Jacket-IoT/
-├── 📁 Arduino Code/
-│   └── smart_jacket.ino         # Main ESP32 code (sensors, RFID, LCD, logic)
+<details> <summary>📂 <strong>Project Structure</strong></summary>
+pgsql
+Copy
+Edit
+Smart-Jacket-IoT/
+├── Arduino Code/
+│   └── smart_jacket.ino        # Main ESP32 code (sensors, RFID, LCD, logic)
 │
-├── 📁 public/                    # Frontend (served by Express server)
-│   ├── index.html               # Live sensor dashboard
-│   └── log.html                 # Session log viewer
+├── public/                     # Frontend (served by Express server)
+│   ├── index.html              # Live sensor dashboard
+│   └── log.html                # Session log viewer
 │
-├── logs.json                    # Stored session logs (created by server)
-├── server.js                    # Node.js server (serial + socket.io + API)
-├── README.md                    # Project documentation (this file)
-└── package.json                 # Node.js dependencies (created by npm init)
+├── logs.json                   # Stored session logs (created by server)
+├── server.js                   # Node.js server (serial + socket.io + API)
+├── README.md                   # Project documentation (this file)
+└── package.json                # Node.js dependencies (created by npm init)
+</details>
 
 
 
@@ -85,7 +90,7 @@ npm install
 node server.js
 
 
-🧠 Thresholds Used
+## 🧠 Thresholds Used
 Parameter	Threshold	Alert Triggered If
 Temperature	> 37°C	High temp alert
 Pulse	> 120 BPM	High pulse alert
@@ -93,7 +98,7 @@ Gas Level	> 1000	Dangerous gas level alert
 BT Connected	0 (false)	Bluetooth disconnected alert
 
 
-🧰 Tech Stack
+## 🧰 Tech Stack
 ESP32 (Arduino IDE)
 Node.js (Express + Socket.IO + SerialPort)
 HTML/CSS/JS (Frontend UI)
@@ -101,7 +106,7 @@ RFID MFRC522
 Sensors: DHT11, MQ2, Pulse Sensor, LDR
 LCD 16x2 I2C, Buzzer, Motor, Bluetooth
 
-👨‍💻 Developed By
+## 👨‍💻 Developed By
 Kunal Raj.S
 📍 BMS College of Engineering
 
