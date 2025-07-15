@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Kunal",
+    "startTime": "10:26:41 am",
+    "endTime": "10:27:04 am",
+    "duration": "22 sec"
+  },
+  {
+    "name": "Pushkar",
+    "startTime": "10:27:31 am",
+    "endTime": "10:27:39 am",
+    "duration": "7 sec"
+  },
+  {
+    "name": "Kunal",
+    "startTime": "10:27:48 am",
+    "endTime": "10:27:52 am",
+    "duration": "4 sec"
+  },
+  {
+    "name": "Kunal",
+    "startTime": "10:47:10 am",
+    "endTime": "10:47:52 am",
+    "duration": "42 sec"
+  },
+  {
+    "name": "Kunal",
+    "startTime": "12:05:11 pm",
+    "endTime": "12:05:21 pm",
+    "duration": "9 sec"
+  },
+  {
+    "name": "Pushkar",
+    "startTime": "12:13:21 pm",
+    "endTime": "12:13:27 pm",
+    "duration": "6 sec"
+  }
+]

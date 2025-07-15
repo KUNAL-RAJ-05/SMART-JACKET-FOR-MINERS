@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Jacket Dashboard</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <style>
+    body { font-family: Arial; background: #f0f0f0; padding: 20px; }
+    .box { background: #fff; padding: 15px; margin: 10px 0; border-radius: 8px; box-shadow: 0 0 10px #ccc; }
+    .alert { color: red; font-weight: bold; }
+    #statusLog { max-height: 150px; overflow-y: auto; white-space: pre-line; font-size: 15px; }
+    button { padding: 10px 15px; font-size: 16px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Smart Jacket Dashboard</h1>
+
+  <div class="box">Temperature: <span id="temperature">--</span> °C</div>
+  <div class="box">Pulse: <span id="pulse">--</span> BPM</div>
+  <div class="box">Gas Level: <span id="gas">--</span> PPM</div>
+  <div class="box">Bluetooth Status: <span id="btStatus">--</span></div>
+  <div id="alertMessage" class="alert box"></div>
+
+  <div class="box"><strong>Status Log:</strong>
+    <div id="statusLog"></div>
+  </div>
+
+  <button onclick="location.href='/log.html'">View Session Logs</button>
+
+  <script>
+    const socket = io();
+    const tempThreshold = 37;
+    const pulseThreshold = 120;
+    const gasThreshold = 1000;
+
+    socket.on("sensorData", data => {
+      document.getElementById("temperature").textContent = data.Temperature;
+      document.getElementById("pulse").textContent = data.Pulse;
+      document.getElementById("gas").textContent = data.Gas;
+      document.getElementById("btStatus").textContent = data["BT connected"] === 1 ? "Connected" : "Disconnected";
+
+      let alerts = [];
+      if (data.Temperature > tempThreshold) alerts.push("⚠️ High Temperature!");
+      if (data.Pulse > pulseThreshold) alerts.push("⚠️ High Pulse!");
+      if (data.Gas > gasThreshold) alerts.push("⚠️ Gas Level Dangerous!");
+      if (data["BT connected"] === 0) alerts.push("⚠️ Bluetooth Disconnected!");
+
+      document.getElementById("alertMessage").textContent = alerts.join(" ");
+    });
+
+    socket.on("sessionMessage", msg => {
+      const log = document.getElementById("statusLog");
+      log.textContent += msg + "\n";
+      log.scrollTop = log.scrollHeight;
+    });
+  </script>
+</body>
+</html>

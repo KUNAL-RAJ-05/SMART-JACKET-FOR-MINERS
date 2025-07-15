@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Session Log</title>
+  <style>
+    body { font-family: Arial; background: #f0f0f0; padding: 20px; }
+    table { width: 100%; border-collapse: collapse; background: #fff; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+    th { background: #eee; }
+    button { padding: 10px 15px; margin-bottom: 15px; }
+  </style>
+</head>
+<body>
+  <h1>Session Log</h1>
+  <button onclick="location.href='index.html'">⬅ Back to Home</button>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Session Start</th>
+        <th>Session End</th>
+        <th>Duration</th>
+      </tr>
+    </thead>
+    <tbody id="logTable"></tbody>
+  </table>
+
+  <script>
+    fetch("/api/logs")
+      .then(res => res.json())
+      .then(data => {
+        const table = document.getElementById("logTable");
+        data.forEach(log => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${log.name}</td>
+            <td>${log.startTime}</td>
+            <td>${log.endTime}</td>
+            <td>${log.duration}</td>
+          `;
+          table.appendChild(row);
+        });
+      });
+  </script>
+</body>
+</html>
