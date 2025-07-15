@@ -29,15 +29,19 @@ A real-time **wearable safety solution** built using the **ESP32 microcontroller
 
 ---
 
-## 📂 Project Structure
+📁 Smart-Jacket-IoT/
+├── 📁 Arduino Code/
+│   └── smart_jacket.ino         # Main ESP32 code (sensors, RFID, LCD, logic)
+│
+├── 📁 public/                    # Frontend (served by Express server)
+│   ├── index.html               # Live sensor dashboard
+│   └── log.html                 # Session log viewer
+│
+├── logs.json                    # Stored session logs (created by server)
+├── server.js                    # Node.js server (serial + socket.io + API)
+├── README.md                    # Project documentation (this file)
+└── package.json                 # Node.js dependencies (created by npm init)
 
-📁 SmartJacket/
-├── smart_jacket.ino # ESP32 Arduino code (sensor logic, RFID, LCD)
-├── server.js # Node.js backend for serial & websocket communication
-├── logs.json # Persistent session logs
-├── public/
-│ ├── index.html # Real-time sensor dashboard
-│ └── log.html # Session log viewer
 
 
 ---
@@ -53,7 +57,7 @@ Live sensor values and smart alerts are displayed in real time using Socket.IO.
 - Live status messages (e.g., session start/end)
 - Navigation to session logs
 
-> ![Dashboard Preview](assets/dashboard-preview.png)
+> ![Dashboard Preview](assets/Screenshot%202025-06-26%20104739.png)
 
 ---
 
@@ -65,7 +69,7 @@ Fetches and displays all saved session logs from `logs.json`.
 |--------|----------------|--------------|----------|
 | Kunal  | 12:10:05 PM     | 12:12:47 PM  | 162 sec  |
 
-> ![Log Preview](assets/log-preview.png)
+> ![Log Preview](assets/Screenshot%202025-06-26%20104818.png)
 
 ---
 
